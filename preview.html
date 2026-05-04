@@ -12,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://unpkg.com/lucide@latest"></script>
 
 
 <style>
@@ -185,10 +186,6 @@ body{
 }
 
 /* IMAGE ZOOM */
-.hero img{
-  transform:scale(1.1);
-  animation:zoomOut 1.5s ease forwards;
-}
 
 @keyframes zoomOut{
   to{
@@ -468,18 +465,6 @@ h1,h2,h3{
   cursor:grab;
 }
 
-.hero-track{
-  display:flex;
-  height:100%;
-  width:200%;
-}
-
-.hero-track img{
-  width:100vw;
-  height:100%;
-  object-fit:cover;
-  flex-shrink:0;
-}
 
 /* OVERLAY TEXT */
 .hero-overlay{
@@ -488,7 +473,7 @@ h1,h2,h3{
   left:80px;
   transform:translateY(-50%);
   color:black;
-  z-index:5;
+  z-index:2;
 }
 
 .hero-overlay h1{
@@ -1210,6 +1195,7 @@ h2{
   content:"";
   position:absolute;
   inset:0;
+  z-index:-1; 
 
   background:linear-gradient(
     to right,
@@ -1219,33 +1205,9 @@ h2{
     transparent 70%
   );
 
-  z-index:1;
-}
-/* SLIDER CONTAINER */
-.hero-slider{
-  position:absolute;
-  inset:0;
-  overflow:hidden;
+  z-index:0;
 }
 
-/* SLIDES */
-.slide{
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:65% center;
-
-  opacity:0;
-  transform:scale(1.08);
-  transition:all 1.2s ease;
-}
-
-/* ACTIVE IMAGE */
-.slide.active{
-  opacity:1;
-  transform:scale(1);
-}
 .dropdown{
   position:relative;
 }
@@ -1406,6 +1368,101 @@ h2{
   opacity: 0.7;
   transform: scale(1.1);
 }
+/* SIDEBAR POSITION */
+.social {
+  position: fixed;
+  left: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+  padding: 10px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* ICON WRAPPER */
+.social a {
+  width: 18px;
+  height: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  text-decoration: none;
+
+  transition: 0.3s ease;
+}
+
+/* ICON STYLE */
+.social i {
+  width: 10px;
+  height: 10px;
+  stroke: #111;
+  transition: 0.3s ease;
+}
+
+/* 🔥 HOVER BLACK CIRCLE EFFECT */
+.social a:hover {
+  background: white;
+}
+
+.social a:hover i {
+  stroke: #fff;
+  transform: scale(1.05);
+}
+
+/* NEWSLETTER TAG */
+.newsletter {
+  margin-top: 10px;
+
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-family: Arial, sans-serif;
+
+  background: #fff;
+  color: #111;
+
+  padding: 10px 6px;
+  border-radius: 20px;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.social a {
+  transform: translateX(0);
+}
+
+.social a:hover {
+  transform: translateX(3px);
+}
+.hero-slider{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  z-index:1;
+}
+
+/* ALL IMAGES STACKED */
+.slide{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+
+  opacity:0;
+  transition:opacity 1s ease;
+}
+
+/* ONLY ACTIVE SHOWS */
+.slide.active{
+  opacity:1;
+}
 </style>
 </head>
 
@@ -1421,12 +1478,16 @@ h2{
 <div class="ui-layer">
 
   <!-- SOCIAL -->
-  <div class="social">
-    <div>f</div>
-    <div>X</div>
-    <div>P</div>
-    <div>IG</div>
-  </div>
+<div class="social">
+  <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+  <a href="#"><i class="fa-regular fa-user"></i></a>
+  <a href="#"><i class="fa-solid fa-bag-shopping"></i></a>
+  <a href="#"><i data-lucide="music"></i></a>
+
+  <div class="newsletter">NEWSLETTER</div>
+</div>
+
+
 
 <div class="nav">
 
@@ -1510,12 +1571,10 @@ h2{
 <section class="hero-exact">
 
   <!-- SLIDER -->
-  <div class="hero-slider">
-
-    <img src="home1.png" class="slide active">
-    <img src="home2.png" class="slide">
-
-  </div>
+<div class="hero-slider">
+  <img src="home1.png" class="slide active">
+  <img src="CF.png" class="slide">
+</div>
 
   <!-- TEXT -->
   <div class="hero-content">
@@ -1821,7 +1880,7 @@ h2{
     </div>
 
     <!-- RIGHT -->
-    <div class="footer-col newsletter">
+    <div class="footer-col ">
 
       <h5>EXCLUSIVE BENEFITS</h5>
 
@@ -1898,21 +1957,6 @@ window.addEventListener("load", () => {
    HERO STORY (BALANCED)
 ========================= */
 
-gsap.to(".hero-track img:nth-child(1)", {
-  x: 100,
-  scrollTrigger:{
-    trigger:".hero-full",
-    scrub:true
-  }
-});
-
-gsap.to(".hero-track img:nth-child(2)", {
-  x: -100,
-  scrollTrigger:{
-    trigger:".hero-full",
-    scrub:true
-  }
-});
 /* =========================
    PARALLAX
 ========================= */
@@ -2091,149 +2135,19 @@ document.querySelectorAll(".card img").forEach(img=>{
   });
 
 });
+
 /* =========================
-   HERO FINAL (SMOOTH + INERTIA)
-========================= */
-
-const track = document.querySelector(".hero-track");
-
-let current = 0;
-let target = 0;
-let isDown = false;
-let startX = 0;
-
-// SMOOTH LOOP
-function animateHero(){
-  current += (target - current) * 0.08;
-  gsap.set(track, { x: current });
-  requestAnimationFrame(animateHero);
-}
-animateHero();
-
-// AUTO FLOAT (SUBTLE)
-gsap.to({}, {
-  duration: 20,
-  repeat: -1,
-  onUpdate: () => {
-    if(!isDown){
-      target -= 0.05;
-    }
-  }
-});
-
-// DRAG START
-track.addEventListener("mousedown", (e)=>{
-  isDown = true;
-  startX = e.clientX;
-  track.style.cursor = "grabbing";
-});
-
-// DRAG MOVE
-window.addEventListener("mousemove", (e)=>{
-  if(!isDown) return;
-
-  let delta = e.clientX - startX;
-  target += delta * 0.3;
-  startX = e.clientX;
-});
-
-// DRAG END
-window.addEventListener("mouseup", ()=>{
-  isDown = false;
-  track.style.cursor = "grab";
-});
-
-// TOUCH SUPPORT
-track.addEventListener("touchstart", e=>{
-  startX = e.touches[0].clientX;
-});
-
-track.addEventListener("touchmove", e=>{
-  let delta = e.touches[0].clientX - startX;
-  target += delta * 0.3;
-  startX = e.touches[0].clientX;
-});
-const images = document.querySelectorAll(".hero-img");
+   HERO SLIDER FINAL (WORKING)
+========================= */const slides = document.querySelectorAll(".slide");
 let index = 0;
 
-// AUTO SWITCH
-setInterval(()=>{
-  images[index].classList.remove("active");
-  index = (index + 1) % images.length;
-  images[index].classList.add("active");
-},4000);
+setInterval(() => {
+  slides[index].classList.remove("active");
 
-// SWIPE SUPPORT
-let startX = 0;
+  index = (index + 1) % slides.length;
 
-document.querySelector(".hero-images").addEventListener("touchstart", e=>{
-  startX = e.touches[0].clientX;
-});
-
-document.querySelector(".hero-images").addEventListener("touchend", e=>{
-  let endX = e.changedTouches[0].clientX;
-
-  if(endX < startX){
-    nextSlide();
-  }else{
-    prevSlide();
-  }
-});
-
-function nextSlide(){
-  images[index].classList.remove("active");
-  index = (index + 1) % images.length;
-  images[index].classList.add("active");
-}
-
-function prevSlide(){
-  images[index].classList.remove("active");
-  index = (index - 1 + images.length) % images.length;
-  images[index].classList.add("active");
-}
-const slides = document.querySelectorAll(".slide");
-let currentSlide = 0;
-
-/* AUTO SLIDE */
-setInterval(()=>{
-  slides[currentSlide].classList.remove("active");
-  currentSlide = (currentSlide + 1) % slides.length;
-  slides[currentSlide].classList.add("active");
-}, 4000);
-
-/* SWIPE SUPPORT */
-let startX = 0;
-
-const slider = document.querySelector(".hero-slider");
-
-slider.addEventListener("touchstart", e=>{
-  startX = e.touches[0].clientX;
-});
-
-slider.addEventListener("touchend", e=>{
-  let endX = e.changedTouches[0].clientX;
-
-  if(endX < startX){
-    nextSlide();
-  }else{
-    prevSlide();
-  }
-});
-
-function nextSlide(){
-  slides[currentSlide].classList.remove("active");
-  currentSlide = (currentSlide + 1) % slides.length;
-  slides[currentSlide].classList.add("active");
-}
-
-function prevSlide(){
-  slides[currentSlide].classList.remove("active");
-  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-  slides[currentSlide].classList.add("active");
-}
-</script>
-<script>
-  lucide.createIcons();
+  slides[index].classList.add("active");
+}, 2000);
 </script>
 </body>
 </html>
