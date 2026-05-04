@@ -1,0 +1,2239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOLO LOKA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+<style>
+
+:root{
+  --main:#2e1f35;
+  --text:#1a1b18;
+}
+
+body{
+  margin:0;
+  font-family:Assistant;
+  color:var(--text);
+}
+
+/* NAV */
+.nav{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 40px;
+  background:#5a2f63;
+  color:white;
+  align-items:center;
+}
+
+.nav a{
+  margin:0 10px;
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+}
+
+/* LEFT SOCIAL BAR */
+.social{
+  position:fixed;
+  left:10px;
+  top:40%;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  font-size:14px;
+}
+
+/* HERO */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  height:90vh;
+}
+
+.hero-left{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:60px;
+}
+
+.hero-left h1{
+  font-size:60px;
+  font-family:"Josefin Sans";
+}
+
+.hero-left button{
+  margin-top:20px;
+  padding:12px 25px;
+  background:#000;
+  color:#fff;
+  border:none;
+}
+
+.hero img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* PRODUCTS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.card{
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:scale(1.03);
+}
+
+.card img{
+  width:100%;
+}
+
+.price{
+  font-weight:bold;
+}
+
+/* WHY US */
+.why{
+  display:flex;
+  justify-content:space-around;
+  text-align:center;
+}
+
+/* BLOG */
+.blog{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+
+/* CHAT */
+.chat{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:black;
+  color:white;
+  padding:10px 15px;
+  border-radius:20px;
+}
+/* GLOBAL ANIMATION BASE */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 0.8s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* STAGGER */
+.grid .card{
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.6s ease;
+}
+
+.grid .card.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* HERO ANIMATION */
+.hero-left h1{
+  animation:fadeUp 1s ease forwards;
+}
+
+.hero-left p{
+  animation:fadeUp 1.2s ease forwards;
+}
+
+.hero-left button{
+  animation:fadeUp 1.4s ease forwards;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* IMAGE ZOOM */
+.hero img{
+  transform:scale(1.1);
+  animation:zoomOut 1.5s ease forwards;
+}
+
+@keyframes zoomOut{
+  to{
+    transform:scale(1);
+  }
+}
+
+/* CARD HOVER PREMIUM */
+.card{
+  transition:all 0.4s ease;
+}
+
+.card:hover{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* BUTTON MICRO */
+button{
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.05);
+  background:#333;
+}
+
+#cursor{
+  width:20px;
+  height:20px;
+  border:2px solid black;
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  transform:translate(-50%, -50%);
+  z-index:9999;
+}
+body{
+  overflow-x:hidden;
+}
+
+.card{
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+
+.hero img{
+  will-change:transform;
+}
+/* PREMIUM HERO */
+.hero-premium{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  min-height:90vh;
+  background:#f7f5f3;
+}
+
+.hero-left h1{
+  font-size:64px;
+  letter-spacing:2px;
+}
+
+.hero-left p{
+  margin-top:10px;
+  font-size:18px;
+}
+
+.hero-right img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* PRODUCT CARDS */
+.card{
+  background:#fff;
+  padding:10px;
+}
+
+.card h3{
+  font-size:15px;
+  margin:8px 0;
+}
+
+.price{
+  font-size:14px;
+}
+
+/* BLOG */
+.blog-card img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+}
+
+.blog-card h3{
+  font-size:18px;
+}
+
+/* REVIEWS PREMIUM */
+.review{
+  width:250px;
+  font-size:14px;
+}
+
+/* FOLLOW SECTION */
+.follow{
+  text-align:center;
+  padding:10px 20px;
+}
+
+.follow h2{
+  font-size:32px;
+}
+
+/* FOOTER PREMIUM */
+.footer{
+  grid-template-columns:1fr 1fr 1fr;
+  gap:40px;
+}
+
+.footer input{
+  padding:10px;
+  width:100%;
+}
+
+/* LEFT SOCIAL (MATCH DESIGN) */
+.social{
+  left:15px;
+  font-size:13px;
+}
+
+/* BUTTON */
+button{
+  background:#000;
+  color:white;
+  border:none;
+  padding:12px 25px;
+}
+/* =============================
+   GLOBAL TYPOGRAPHY SYSTEM
+============================= */
+body{
+  font-family:Inter, sans-serif;
+  background:white;
+}
+
+h1,h2,h3{
+  font-family:"Playfair Display";
+  letter-spacing:1px;
+}
+
+/* =============================
+   HERO PERFECT MATCH
+============================= */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  height:100vh;
+  align-items:center;
+  padding:0 80px;
+}
+
+.hero-left{
+  max-width:500px;
+}
+
+.hero-left h1{
+  font-size:64px;
+  line-height:1.1;
+}
+
+.hero-left p{
+  margin-top:10px;
+  font-size:18px;
+  color:#555;
+}
+
+.hero-left button{
+  margin-top:25px;
+  padding:14px 30px;
+  background:#000;
+  color:#fff;
+  border:none;
+  letter-spacing:1px;
+}
+
+/* IMAGE STACK */
+.hero-right{
+  position:relative;
+  height:80vh;
+}
+
+.hero-img{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.hero-img.back{
+  transform:scale(1.1);
+  filter:blur(2px);
+  opacity:0.6;
+}
+
+.hero-img.front{
+  transform:scale(0.95);
+  z-index:2;
+}
+
+/* =============================
+   IMAGE HOVER ZOOM + SWAP
+============================= */
+.card img{
+  transition:0.5s ease;
+}
+
+.card:hover img{
+  transform:scale(1.1);
+}
+
+/* =============================
+   REVIEW CAROUSEL
+============================= */
+.reviews{
+  display:flex;
+  overflow:hidden;
+  gap:20px;
+}
+
+.review{
+  min-width:300px;
+  background:white;
+  padding:20px;
+  border-radius:10px;
+}
+
+/* =============================
+   MOBILE PERFECT
+============================= */
+@media(max-width:900px){
+
+  .hero{
+    grid-template-columns:1fr;
+    padding:20px;
+    height:auto;
+  }
+
+  .hero-right{
+    height:300px;
+    margin-top:20px;
+  }
+
+  .hero-left h1{
+    font-size:40px;
+  }
+
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .blog{
+    grid-template-columns:1fr;
+  }
+
+}
+/* =============================
+   FULL HERO SLIDER
+============================= */
+.hero-full{
+  position:relative;
+  height:100vh;
+  overflow:hidden;
+  cursor:grab;
+}
+
+.hero-track{
+  display:flex;
+  height:100%;
+  width:200%;
+}
+
+.hero-track img{
+  width:100vw;
+  height:100%;
+  object-fit:cover;
+  flex-shrink:0;
+}
+
+/* OVERLAY TEXT */
+.hero-overlay{
+  position:absolute;
+  top:50%;
+  left:80px;
+  transform:translateY(-50%);
+  color:black;
+  z-index:5;
+}
+
+.hero-overlay h1{
+  font-size:72px;
+  font-family:'Playfair Display', serif;
+  font-weight:500;
+  letter-spacing:2px;
+  line-height:1.1;
+
+  /* PREMIUM EFFECT */
+  text-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.hero-overlay p{
+  font-size:18px;
+  margin-top:10px;
+}
+
+.hero-overlay button{
+  margin-top:20px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .hero-overlay{
+    left:20px;
+  }
+  .hero-overlay h1{
+    font-size:40px;
+  }
+}
+.hearts{
+  color:#ff6b6b;
+  font-size:10px;
+  margin-top:10px;
+  letter-spacing:8px;
+}
+/* =============================
+   DROPDOWN MENU
+============================= */
+.dropdown{
+  position:relative;
+  display:inline-block;
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:30px;
+  left:0;
+  background:white;
+  color:black;
+  padding:15px;
+  display:none;
+  min-width:150px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.dropdown-menu p{
+  margin:5px 0;
+  cursor:pointer;
+}
+
+.dropdown:hover .dropdown-menu{
+  display:block;
+}
+.hero-full::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to right,
+    rgba(255,255,255,0.95) 0%,
+    rgba(255,255,255,0.85) 25%,
+    rgba(255,255,255,0.4) 50%,
+    transparent 70%
+  );
+  z-index:1;
+}
+
+.hero-overlay{
+  z-index:2;
+}
+h2{
+  margin-bottom:40px;
+  font-size:32px;
+}
+
+.reviews{round:#5a2f63;
+  display:flex;
+  gap:40px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.review{
+  width:250px;
+  text-align:left;
+  font-size:14px;
+}
+.hero-sub{
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size:18px;
+  color:#444;
+  margin-top:10px;
+}
+.hearts{
+  color:#ff6b6b;
+  font-size:10px;
+  margin-top:10px;
+  letter-spacing:8px;
+}
+/* WHY SECTION PREMIUM */
+.why-section{
+  text-align:center;
+  padding:100px 60px;
+}
+
+.why-section h2{
+  font-size:34px;
+  margin-bottom:60px;
+}
+
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:40px;
+}
+
+.why-item{
+  text-align:center;
+  max-width:260px;
+  margin:auto;
+}
+
+.why-item .icon{
+  font-size:22px;
+  margin-bottom:15px;
+  opacity:0.8;
+}
+
+.why-item h4{
+  font-family:'Playfair Display', serif;
+  font-size:16px;
+  margin-bottom:10px;
+}
+
+.why-item p{
+  font-size:13px;
+  color:#666;
+  line-height:1.6;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:30px;
+  padding:40px 80px;
+}
+
+.card{
+  background:#fff;
+  padding:15px;
+  border-radius:6px;
+  transition:all 0.4s ease;
+}
+
+.card img{
+  width:100%;
+  border-radius:4px;
+}
+
+.card h3{
+  font-size:14px;
+  margin-top:12px;
+}
+
+.price{
+  font-size:13px;
+  margin-top:5px;
+  color:#444;
+}
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.08);
+}
+.section{
+  padding:80px 0;
+}
+@media(max-width:900px){
+
+  .why-grid{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+
+  .grid{
+    grid-template-columns:1fr 1fr;
+    padding:20px;
+  }
+
+}
+/* =============================
+   PRODUCT GRID (EXACT MATCH)
+============================= */
+.products-premium{
+  padding:40px 80px 100px;
+}
+
+.grid-premium{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:35px;
+}
+
+/* PRODUCT CARD */
+.product{
+  text-align:left;
+}
+
+/* IMAGE FRAME EFFECT */
+.img-wrap{
+  background:#f3f3f3;
+  padding:18px;
+  border-radius:6px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.04);
+  transition:all 0.4s ease;
+}
+
+.img-wrap img{
+  width:100%;
+  display:block;
+  border-radius:3px;
+}
+
+/* HOVER LIKE REFERENCE */
+.product:hover .img-wrap{
+  transform:translateY(-8px);
+  box-shadow:0 25px 45px rgba(0,0,0,0.08);
+}
+
+/* TITLE */
+.product h3{
+  margin-top:14px;
+  font-size:14px;
+  font-weight:500;
+  line-height:1.4;
+}
+
+/* PRICE */
+.product .price{
+  margin-top:6px;
+  font-size:13px;
+  color:#555;
+}
+@media(max-width:900px){
+  .grid-premium{
+    grid-template-columns:1fr 1fr;
+  }
+}
+.view-all-wrap{
+  text-align:center;
+  margin-top:40px;
+}
+
+.view-all{
+  background:#111;
+  color:#fff;
+  padding:14px 40px;
+  font-size:12px;
+  letter-spacing:2px;
+  border:none;
+  cursor:pointer;
+}
+/* =============================
+   MEANINGFUL GIFTING SECTION
+============================= */
+.gift-section{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:20px 40px;
+  gap:60px;
+}
+
+/* LEFT TEXT */
+.gift-text{
+  max-width:450px;
+}
+
+.gift-text .mini{
+  font-size:11px;
+  letter-spacing:3px;
+  color:#777;
+  margin-bottom:10px;
+}
+
+.gift-text h2{
+  font-size:38px;
+  margin-bottom:15px;
+}
+
+.gift-text .desc{
+  font-size:14px;
+  color:#555;
+  line-height:1.6;
+}
+
+.gift-text button{
+  margin-top:25px;
+  padding:14px 30px;
+  background:#000;
+  color:#fff;
+  border:none;
+  letter-spacing:1px;
+}
+
+/* RIGHT IMAGE */
+.gift-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .gift-section{
+    grid-template-columns:1fr;
+    padding:60px 20px;
+  }
+}
+.gift-section{
+  grid-template-columns:0.9fr 1.1fr;
+}
+/* =============================
+   REVIEWS EXACT MATCH
+============================= */
+.reviews-premium{
+  padding:50px 80px;
+  text-align:center;
+}
+
+.reviews-premium h2{
+  font-size:32px;
+  margin-bottom:5px;
+}
+
+.reviews-premium .sub{
+  font-size:16px;
+  color:#666;
+  margin-bottom:50px;
+}
+
+/* ROW */
+.reviews-row{
+  padding:50px;
+  display:flex;
+  gap:40px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* CARD */
+.review-card{
+  width:240px;
+  text-align:left;
+}
+
+/* TOP */
+.review-top{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.review-top img{
+  width:35px;
+  height:35px;
+  border-radius:50%;
+}
+
+.review-top h4{
+  font-size:14px;
+  margin:0;
+}
+
+.review-top span{
+  font-size:11px;
+  color:#888;
+}
+
+/* STARS */
+.stars{
+  color:#f5a623;
+  font-size:14px;
+  margin:8px 0;
+}
+
+/* TEXT */
+.review-card p{
+  font-size:13px;
+  color:#333;
+  line-height:1.5;
+}
+
+/* BRAND */
+.brand{
+  margin-top:10px;
+  color:#e26d2f;
+  font-weight:500;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .reviews-row{
+    gap:20px;
+  }
+}
+.blog-section{
+  padding:10px;
+}
+
+.blog{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+}
+
+.blog-card img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+}
+
+.blog-card h3{
+  font-size:18px;
+  font-family:"Playfair Display";
+  margin:15px 0 8px;
+}
+
+.blog-card .date{
+  font-size:11px;
+  letter-spacing:2px;
+  color:#888;
+}
+
+.blog-card .desc{
+  font-size:13px;
+  color:#555;
+  margin-top:8px;
+}
+
+.blog-card .read{
+  display:block;
+  margin-top:10px;
+  font-size:12px;
+}
+
+.footer-premium{
+  background:#f3f1ee;
+  padding:70px 80px;
+  border-top:1px solid #e5e5e5;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1.5fr;
+  gap:80px;
+}
+
+/* HEADINGS */
+.footer-col h5{
+  font-size:11px;
+  letter-spacing:2px;
+  color:#777;
+  margin-bottom:20px;
+}
+
+/* LINKS */
+.footer-col a{
+  display:block;
+  font-size:14px;
+  margin:8px 0;
+  color:#222;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+.footer-col a:hover{
+  opacity:0.6;
+}
+
+/* NEWSLETTER */
+.newsletter-box{
+  display:flex;
+  align-items:center;
+  border-bottom:1px solid #ccc;
+  padding-bottom:6px;
+  margin-bottom:15px;
+}
+
+.newsletter-box input{
+  border:none;
+  outline:none;
+  flex:1;
+  font-size:14px;
+  background:transparent;
+}
+
+.newsletter-box span{
+  font-size:18px;
+  cursor:pointer;
+}
+
+/* TEXT */
+.note{
+  font-size:12px;
+  color:#666;
+  line-height:1.6;
+  margin:15px 0 25px;
+}
+
+/* SOCIAL */
+.social-row{
+  display:flex;
+  gap:18px;
+  font-size:16px;
+  margin-bottom:20px;
+}
+
+/* FOLLOW BUTTON */
+.follow-btn{
+  background:#5a2f63;
+  color:#fff;
+  padding:12px 22px;
+  border-radius:25px;
+  border:none;
+  font-size:14px;
+  cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+}
+.hero-premium{
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  height:100vh;
+  align-items:center;
+  padding:0 60px;
+  background:#f6f3ef;
+  overflow:hidden;
+}
+
+/* LEFT TEXT */
+.hero-text{
+  position:relative;
+  z-index:2;
+  transition:0.6s ease;
+}
+
+.hero-text h1{
+  font-family:'Playfair Display', serif;
+  font-size:80px;
+  line-height:1.1;
+  letter-spacing:3px;
+}
+
+/* TAGLINE */
+.tagline{
+  font-family:cursive;
+  font-size:22px;
+  margin-top:20px;
+}
+
+/* COLLECTION TEXT */
+.collection{
+  font-size:11px;
+  letter-spacing:3px;
+  margin-top:15px;
+  color:#777;
+}
+
+/* CTA */
+.cta{
+  margin-top:25px;
+  background:#5a2f63;
+  color:white;
+  padding:12px 28px;
+  border:none;
+  letter-spacing:2px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.cta:hover{
+  transform:translateY(-3px);
+}
+
+/* RIGHT IMAGES */
+.hero-images{
+  position:relative;
+  height:80vh;
+}
+
+.hero-img{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transform:scale(1.1);
+  transition:0.7s ease;
+}
+
+.hero-img.active{
+  opacity:1;
+  transform:scale(1);
+}
+
+/* TEXT MOVE ON HOVER */
+.hero-premium:hover .hero-text{
+  transform:translateX(-60px);
+}
+.dropdown-menu{
+  position:absolute;
+  top:100%;
+  left:0;
+  background:#5a2f63;
+  color:white;
+  padding:20px;
+  display:none;
+  min-width:180px;
+}
+
+.dropdown-menu p{
+  margin:10px 0;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.dropdown:hover .dropdown-menu{
+  display:block;
+}
+.nav{
+  background:#5a2f63;
+  font-family:Inter;
+}
+
+.nav a{
+  font-size:13px;
+  letter-spacing:2px;
+}
+/* FULL HERO */
+.hero-exact{
+  position:relative;
+  height:100vh;
+  overflow:hidden;
+}
+
+/* BACKGROUND IMAGE */
+.hero-bg{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+
+  /* 🔥 THIS IS CRITICAL */
+  object-position: 65% center;
+}
+
+/* LEFT TEXT */
+.hero-content{
+  position:absolute;
+  left:80px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:2;
+}
+
+/* MAIN TEXT (HANDWRITTEN STYLE) */
+.hero-title{
+  font-family: 'Patrick Hand', cursive;
+  font-size:90px;
+  line-height:1.1;
+  color:#111;
+  letter-spacing:2px;
+}
+
+/* SCRIPT TEXT */
+.hero-script{
+  font-family: 'Dancing Script', cursive;
+  font-size:26px;
+  margin-top:20px;
+}
+
+/* SMALL TEXT */
+.hero-mini{
+  font-size:11px;
+  letter-spacing:3px;
+  margin-top:10px;
+  color:#666;
+}
+
+/* BUTTON */
+.hero-btn{
+  margin-top:20px;
+  background:#c8b6c8;
+  color:#fff;
+  padding:12px 30px;
+  border:none;
+  letter-spacing:2px;
+  cursor:pointer;
+}
+.hero-exact::after{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:linear-gradient(
+    to right,
+    rgba(255,255,255,0.95) 0%,
+    rgba(255,255,255,0.7) 35%,
+    rgba(255,255,255,0.2) 55%,
+    transparent 70%
+  );
+
+  z-index:1;
+}
+/* SLIDER CONTAINER */
+.hero-slider{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+}
+
+/* SLIDES */
+.slide{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:65% center;
+
+  opacity:0;
+  transform:scale(1.08);
+  transition:all 1.2s ease;
+}
+
+/* ACTIVE IMAGE */
+.slide.active{
+  opacity:1;
+  transform:scale(1);
+}
+.dropdown{
+  position:relative;
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:100%;
+  left:0;
+  background:#5a2f63;
+  color:white;
+
+  padding:20px 25px;
+  min-width:200px;
+
+  opacity:0;
+  transform:translateY(10px);
+  pointer-events:none;
+
+  transition:all 0.3s ease;
+}
+
+.dropdown-menu p{
+  margin:10px 0;
+  font-size:13px;
+  letter-spacing:1px;
+  cursor:pointer;
+}
+
+.dropdown-menu p:hover{
+  opacity:0.6;
+}
+
+/* SHOW */
+.dropdown:hover .dropdown-menu{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+.hero-exact:hover .hero-content{
+  transform:translate(-40px, -50%);
+}
+.nav{
+  position:relative;
+  z-index:9999;
+}
+.nav{
+  position:relative;
+  z-index:9999;
+}
+.hero-exact{
+  position:relative;
+  z-index:1;
+}
+.dropdown-menu{
+  transition:opacity 0.25s ease, transform 0.25s ease;
+}
+.nav{
+  display:grid;
+  grid-template-columns: auto 1fr auto;
+  align-items:center;
+
+  padding:15px 40px;
+  background:#5a2f63;
+  color:white;
+
+  position:relative;
+  z-index:9999;
+}
+
+/* CENTER MENU PERFECT */
+.menu{
+  display:flex;
+  justify-content:center;
+  gap:35px;
+}
+
+/* LINKS */
+
+/* ICONS RIGHT */
+.nav-icons{
+  display:flex;
+  gap:20px;
+  font-size:16px;
+  cursor:pointer;
+}
+.dropdown{
+  position:relative;
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:45px;
+  left:0;
+
+  background:#5a2f63;
+  color:white;
+
+  padding:20px 25px;
+  min-width:180px;
+
+  opacity:0;
+  transform:translateY(10px);
+  pointer-events:none;
+
+  transition:all 0.3s ease;
+}
+
+.dropdown-menu p{
+  margin:10px 0;
+  font-size:13px;
+  letter-spacing:1px;
+  cursor:pointer;
+}
+
+.dropdown-menu p:hover{
+  opacity:0.7;
+}
+
+.dropdown:hover .dropdown-menu{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+.logo{
+  font-size:20px;
+}
+
+.nav-icons span:hover{
+  opacity:0.7;
+}
+.nav{
+  display:flex;
+  justify-content:space-between;
+}
+.logo img {
+  height: 50px;
+  transition: 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+}
+.nav-icons {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-icons i {
+  width: 20px;
+  height: 20px;
+  stroke: white;   /* because your navbar is purple */
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.nav-icons i:hover {
+  opacity: 0.7;
+  transform: scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE TRANSITION -->
+<div id="page-transition"></div>
+
+<!-- CUSTOM CURSOR -->
+<div id="cursor"></div>
+
+<!-- FIXED UI LAYER -->
+<div class="ui-layer">
+
+  <!-- SOCIAL -->
+  <div class="social">
+    <div>f</div>
+    <div>X</div>
+    <div>P</div>
+    <div>IG</div>
+  </div>
+
+<div class="nav">
+
+  <!-- LEFT LOGO -->
+  <div class="logo">
+    <img src="logo.png">
+  </div>
+
+  <!-- CENTER MENU -->
+  <div class="menu">
+
+    <div class="dropdown">
+      <a href="#">FOR MOM ❤️</a>
+      <div class="dropdown-menu">
+        <p>Birthday</p>
+        <p>Anniversary</p>
+        <p>Baby</p>
+        <p>Get Well</p>
+        <p>Just Because</p>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <a href="#">OCCASION</a>
+      <div class="dropdown-menu">
+        <p>Birthday</p>
+        <p>Anniversary</p>
+        <p>Wedding</p>
+      </div>
+    </div>
+
+    
+    <div class="dropdown">
+    <a href="#">HOLIDAYS</a>
+         
+    </div>
+    <div class="dropdown">
+    <a href="#">BEST SELLERS</a>
+          <div class="dropdown-menu">
+        <p>Birthday</p>
+        <p>Anniversary</p>
+        <p>Baby</p>
+        <p>Get Well</p>
+        <p>Just Because</p>
+      </div>
+    </div>
+
+
+    <div class="dropdown">
+    <a href="#">PRODUCTS</a>
+          <div class="dropdown-menu">
+        <p>Birthday</p>
+        <p>Anniversary</p>
+        <p>Baby</p>
+        <p>Get Well</p>
+        <p>Just Because</p>
+      </div>
+    </div>
+
+    <div class="dropdown">
+    <a href="#">GIFT IDEAS</a>
+
+    </div>
+
+  </div>
+
+  <!-- RIGHT ICONS -->
+<div class="nav-icons">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <i class="fa-regular fa-user"></i>
+  <i class="fa-solid fa-bag-shopping"></i>
+</div>
+</div>
+
+</div>
+
+<!-- MAIN SCROLL CONTAINER (IMPORTANT FOR LENIS) -->
+<div id="main">
+
+  <!-- HERO -->
+<section class="hero-exact">
+
+  <!-- SLIDER -->
+  <div class="hero-slider">
+
+    <img src="home1.png" class="slide active">
+    <img src="home2.png" class="slide">
+
+  </div>
+
+  <!-- TEXT -->
+  <div class="hero-content">
+
+    <h1 class="hero-title">
+      I<br>LOVE<br>YOU<br>MOM
+    </h1>
+
+    <p class="hero-script">
+      Make Mother’s day unforgettable
+    </p>
+
+    <p class="hero-mini">FOR MOM COLLECTION</p>
+
+    <button class="hero-btn">SHOP NOW</button>
+
+  </div>
+
+</section>
+
+
+<section class="why-section">
+  <h2>Why us?</h2>
+
+  <div class="why-grid">
+
+    <div class="why-item">
+      <div class="icon">🚚</div>
+      <h4>Free shipping over $35</h4>
+      <p>Free and super fast shipping on all US orders over $35</p>
+    </div>
+
+    <div class="why-item">
+      <div class="icon">⭐</div>
+      <h4>5 stars reviews</h4>
+      <p>5 stars reviews since day one from thousands of happy customers.</p>
+    </div>
+
+    <div class="why-item">
+      <div class="icon">♡</div>
+      <h4>Custom-Made</h4>
+      <p>Each artwork is handmade from scratch with unbeatable quality.</p>
+    </div>
+
+    <div class="why-item">
+      <div class="icon">✈️</div>
+      <h4>We ship anywhere</h4>
+      <p>We ship anywhere in the world through our network of fast shipping.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="products-premium">
+  <div class="grid-premium">
+
+    <div class="product">
+      <div class="img-wrap">
+        <img src="MD1.png">
+      </div>
+      <h3>Mom and Daughter Personalized Wall Art</h3>
+      <p class="price">From € 2,000.00</p>
+    </div>
+
+    <div class="product">
+      <div class="img-wrap">
+        <img src="MD2.png">
+      </div>
+      <h3>Mom and Daughters Personalized Wall Art</h3>
+      <p class="price">From € 1,800.00</p>
+    </div>
+
+    <div class="product">
+      <div class="img-wrap">
+        <img src="MS.png">
+      </div>
+      <h3>Mother and Son in Arms Personalized Wall Art</h3>
+      <p class="price">From € 1,800.00</p>
+    </div>
+
+    <div class="product">
+      <div class="img-wrap">
+        <img src="MD3.png">
+      </div>
+      <h3>Mother and Daughter in Arms Personalized Illustration</h3>
+      <p class="price">From € 1,800.00</p>
+    </div>
+
+  </div>
+
+<div class="view-all-wrap">
+  <button class="view-all">VIEW ALL</button>
+</div>
+</section>
+
+
+<section class="gift-section">
+
+  <!-- LEFT TEXT -->
+  <div class="gift-text">
+    <p class="mini">MAKE IT UNIQUE</p>
+    <h2>Meaningful Gifting</h2>
+    <p class="desc">
+      Say 'I Love You' with a personalized illustration that is custom-made just for that special person.
+    </p>
+    <button>SHOP NOW</button>
+  </div>
+
+  <!-- RIGHT IMAGE -->
+  <div class="gift-image">
+    <img src="CF.png">
+  </div>
+
+</section>
+
+<section class="gift-section">
+
+  <!-- LEFT IMAGE  -->
+  <div class="gift-image">
+    <img src="FT.png">
+  </div>
+  <!-- RIGHT TEXT -->
+  <div class="gift-text">
+    <p class="mini">Best Friends Forever</p>
+    <h2>Made For Everyone</h2>
+    <p class="desc">
+      Say 'I Love You' with a personalized illustration that is custom-made just for that special person.
+    </p>
+    <button>SHOP NOW</button>
+  </div>
+</section>
+
+
+
+
+
+
+
+  <!-- REVIEWS -->
+<section class="reviews-premium">
+  <!-- BLOG -->
+  <h2>5 stars reviews</h2>
+  <p class="sub">Since day one</p>
+
+ <section class="section blog-section">
+
+  <p style="text-align: left;">Blog posts</p>
+
+  <div class="blog">
+
+    <div class="blog-card">
+      <img src="mt.png">
+      <h3>Mother's Day Gifts for Grandma 2026: 12 Personalized Ideas She'll Cherish</h3>
+      <p class="date">APRIL 26, 2026</p>
+      <p class="desc">Discover 12 personalized wall art and custom illustration ideas featuring Grandma and her grandkids</p>
+      <span class="read">— Read more</span>
+    </div>
+
+    <div class="blog-card">
+      <img src="mt1.png">
+      <h3>Mother's Day Gifts for Mom Who Has Everything: 12 Unique Ideas 2026</h3>
+      <p class="date">APRIL 20, 2026</p>
+      <p class="desc">Mother's Day Gifts for Mom Who Has Everything: 12 Unique Ideas 2026</p>
+      <span class="read">— Read more</span>
+    </div>
+
+    <div class="blog-card">
+      <img src="mt2.png">
+      <h3>First Mother's Day Gift Guide 2026: 10 Meaningful Gifts for New Moms</h3>
+      <p class="date">APRIL 15, 2026</p>
+      <p class="desc">First Mother's Day Gift Guide 2026: 10 Meaningful Gifts for New Moms</p>
+      <span class="read">— Read more</span>
+    </div>
+
+  </div>
+
+  <div class="view-all-wrap">
+    <button class="view-all">VIEW ALL</button>
+  </div>
+
+</section>
+  <div class="reviews-row">
+
+    <!-- CARD -->
+    <div class="review-card">
+      <div class="review-top">
+        <img src="https://i.pravatar.cc/40?img=1">
+        <div>
+          <h4>Cali</h4>
+          <span>3 days ago</span>
+        </div>
+      </div>
+
+      <div class="stars">★★★★★</div>
+
+      <p>Nice seller and great communicator.</p>
+
+      <div class="brand">Lolo Loka</div>
+    </div>
+
+    <!-- CARD -->
+    <div class="review-card">
+      <div class="review-top">
+        <img src="https://i.pravatar.cc/40?img=2">
+        <div>
+          <h4>Lynne</h4>
+          <span>3 days ago</span>
+        </div>
+      </div>
+
+      <div class="stars">★★★★★</div>
+
+      <p>Great gift idea! Owner reached out to verify everything.</p>
+
+      <div class="brand">Lolo Loka</div>
+    </div>
+
+    <!-- CARD -->
+    <div class="review-card">
+      <div class="review-top">
+        <img src="https://i.pravatar.cc/40?img=3">
+        <div>
+          <h4>Gloria</h4>
+          <span>4 days ago</span>
+        </div>
+      </div>
+
+      <div class="stars">★★★★★</div>
+
+      <p>Very nice. I think my daughter will like it very much.</p>
+
+      <div class="brand">Lolo Loka</div>
+    </div>
+
+    <!-- CARD -->
+    <div class="review-card">
+      <div class="review-top">
+        <img src="https://i.pravatar.cc/40?img=4">
+        <div>
+          <h4>Lauren</h4>
+          <span>5 days ago</span>
+        </div>
+      </div>
+
+      <div class="stars">★★★★★</div>
+
+      <p>Everything about this gift was perfect!!!</p>
+
+      <div class="brand">Lolo Loka</div>
+    </div>
+
+    <!-- CARD -->
+    <div class="review-card">
+      <div class="review-top">
+        <img src="https://i.pravatar.cc/40?img=5">
+        <div>
+          <h4>Rachel</h4>
+          <span>6 days ago</span>
+        </div>
+      </div>
+
+      <div class="stars">★★★★★</div>
+
+      <p>It turned out beautifully! My mom is going to love it.</p>
+
+      <div class="brand">Lolo Loka</div>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="follow">
+  <h2>Follow us</h2>
+  <p>#lololoka</p>
+</section>
+
+  <!-- FOOTER -->
+<footer class="footer-premium">
+
+  <div class="footer-grid">
+
+    <!-- LEFT -->
+    <div class="footer-col">
+      <h5>SHOP</h5>
+      <a>For Mom ❤️</a>
+      <a>Occasion</a>
+      <a>Holidays</a>
+      <a>Best Sellers</a>
+      <a>Products</a>
+      <a>Gift Ideas</a>
+    </div>
+
+    <!-- CENTER -->
+    <div class="footer-col">
+      <h5>EXPLORE</h5>
+      <a>Privacy Policy</a>
+      <a>Terms of Service</a>
+      <a>Refund policy</a>
+      <a>Shipping Policy</a>
+      <a>Our story</a>
+      <a>Contact Us</a>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="footer-col newsletter">
+
+      <h5>EXCLUSIVE BENEFITS</h5>
+
+      <div class="newsletter-box">
+        <input placeholder="Enter email here">
+        <span>→</span>
+      </div>
+
+      <p class="note">
+        Subscribe to our newsletter and receive weekly promo codes,
+        exclusive releases, and VIP access to products.
+      </p>
+
+      <div class="social-row">
+        <span>f</span>
+        <span>X</span>
+        <span>P</span>
+        <span>◎</span>
+        <span>♬</span>
+      </div>
+
+      <button class="follow-btn">♡ Follow on shop</button>
+
+    </div>
+
+  </div>
+
+</footer>
+
+</div>
+
+<!-- FLOATING CHAT -->
+<div class="chat">💬 Chat</div>
+<script>
+
+gsap.registerPlugin(ScrollTrigger);
+
+/* =========================
+   LENIS (PROPER INTEGRATION)
+========================= */
+const lenis = new Lenis({
+  duration: 1.2,
+  smoothWheel: true
+});
+
+function raf(time){
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
+lenis.on("scroll", () => {
+  ScrollTrigger.update();
+});
+
+
+/* =========================
+   PAGE TRANSITION
+========================= */
+window.addEventListener("load", () => {
+
+  gsap.to("#page-transition", {
+    opacity:0,
+    duration:0.8,
+    ease:"power2.out",
+    onComplete: () => {
+      document.getElementById("page-transition").style.display = "none";
+    }
+  });
+
+});
+
+/* =========================
+   HERO STORY (BALANCED)
+========================= */
+
+gsap.to(".hero-track img:nth-child(1)", {
+  x: 100,
+  scrollTrigger:{
+    trigger:".hero-full",
+    scrub:true
+  }
+});
+
+gsap.to(".hero-track img:nth-child(2)", {
+  x: -100,
+  scrollTrigger:{
+    trigger:".hero-full",
+    scrub:true
+  }
+});
+/* =========================
+   PARALLAX
+========================= */
+gsap.to(".parallax", {
+  y:120,
+  ease:"none",
+  scrollTrigger:{
+    trigger:".hero",
+    scrub:true
+  }
+});
+
+/* =========================
+   SECTION STORY (SMOOTH)
+========================= */
+gsap.utils.toArray(".section").forEach(section => {
+
+  gsap.from(section.querySelector("h2"), {
+    y:60,
+    opacity:0,
+    duration:1,
+    ease:"power4.out",
+    scrollTrigger:{
+      trigger:section,
+      start:"top 85%"
+    }
+  });
+
+  gsap.from(section.querySelectorAll(".card, .blog-card, .why-item"), {
+    y:80,
+    opacity:0,
+    stagger:0.15,
+    duration:1,
+    ease:"power3.out",
+    scrollTrigger:{
+      trigger:section,
+      start:"top 80%"
+    }
+  });
+
+});
+
+/* =========================
+   PRODUCT ENTRY
+========================= */
+gsap.from(".card", {
+  y:80,
+  opacity:0,
+  stagger:0.1,
+  duration:1,
+  ease:"power4.out",
+  scrollTrigger:{
+    trigger:".grid",
+    start:"top 85%"
+  }
+});
+
+/* =========================
+   REVIEWS
+========================= */
+gsap.from(".review", {
+  x:-100,
+  opacity:0,
+  stagger:0.2,
+  duration:1,
+  ease:"power3.out",
+  scrollTrigger:{
+    trigger:".reviews",
+    start:"top 90%"
+  }
+});
+
+/* =========================
+   3D TILT (SMOOTHED)
+========================= */
+document.querySelectorAll(".card").forEach(card => {
+
+  card.addEventListener("mousemove", e=>{
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    gsap.to(card, {
+      rotateX: -(y - rect.height/2) / 15,
+      rotateY: (x - rect.width/2) / 15,
+      scale:1.04,
+      duration:0.3,
+      ease:"power2.out",
+      transformPerspective:1000
+    });
+  });
+
+  card.addEventListener("mouseleave", ()=>{
+    gsap.to(card, {
+      rotateX:0,
+      rotateY:0,
+      scale:1,
+      duration:0.5,
+      ease:"power3.out"
+    });
+  });
+
+});
+
+/* =========================
+   CURSOR (SMOOTH)
+========================= */
+const cursor = document.getElementById("cursor");
+
+document.addEventListener("mousemove", e=>{
+  gsap.to(cursor, {
+    x:e.clientX,
+    y:e.clientY,
+    duration:0.1,
+    ease:"power2.out"
+  });
+});
+
+/* =========================
+   BUTTON MAGNET
+========================= */
+document.querySelectorAll("button").forEach(btn=>{
+  btn.addEventListener("mousemove", e=>{
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width/2;
+    const y = e.clientY - rect.top - rect.height/2;
+
+    gsap.to(btn, {
+      x:x * 0.2,
+      y:y * 0.2,
+      duration:0.3
+    });
+  });
+
+  btn.addEventListener("mouseleave", ()=>{
+    gsap.to(btn, {x:0,y:0});
+  });
+});
+
+/* =========================
+   FINAL FIX
+========================= */
+ScrollTrigger.addEventListener("refresh", () => lenis.update());
+ScrollTrigger.refresh();
+const reviews = document.querySelector(".reviews");
+
+let scrollAmount = 0;
+
+setInterval(()=>{
+  scrollAmount += 320;
+
+  if(scrollAmount >= reviews.scrollWidth){
+    scrollAmount = 0;
+  }
+
+  reviews.scrollTo({
+    left:scrollAmount,
+    behavior:"smooth"
+  });
+
+},3000);
+
+document.querySelectorAll(".card img").forEach(img=>{
+
+  const original = img.src;
+  const hover = img.dataset.hover;
+
+  if(!hover) return;
+
+  img.addEventListener("mouseenter", ()=>{
+    img.src = hover;
+  });
+
+  img.addEventListener("mouseleave", ()=>{
+    img.src = original;
+  });
+
+});
+/* =========================
+   HERO FINAL (SMOOTH + INERTIA)
+========================= */
+
+const track = document.querySelector(".hero-track");
+
+let current = 0;
+let target = 0;
+let isDown = false;
+let startX = 0;
+
+// SMOOTH LOOP
+function animateHero(){
+  current += (target - current) * 0.08;
+  gsap.set(track, { x: current });
+  requestAnimationFrame(animateHero);
+}
+animateHero();
+
+// AUTO FLOAT (SUBTLE)
+gsap.to({}, {
+  duration: 20,
+  repeat: -1,
+  onUpdate: () => {
+    if(!isDown){
+      target -= 0.05;
+    }
+  }
+});
+
+// DRAG START
+track.addEventListener("mousedown", (e)=>{
+  isDown = true;
+  startX = e.clientX;
+  track.style.cursor = "grabbing";
+});
+
+// DRAG MOVE
+window.addEventListener("mousemove", (e)=>{
+  if(!isDown) return;
+
+  let delta = e.clientX - startX;
+  target += delta * 0.3;
+  startX = e.clientX;
+});
+
+// DRAG END
+window.addEventListener("mouseup", ()=>{
+  isDown = false;
+  track.style.cursor = "grab";
+});
+
+// TOUCH SUPPORT
+track.addEventListener("touchstart", e=>{
+  startX = e.touches[0].clientX;
+});
+
+track.addEventListener("touchmove", e=>{
+  let delta = e.touches[0].clientX - startX;
+  target += delta * 0.3;
+  startX = e.touches[0].clientX;
+});
+const images = document.querySelectorAll(".hero-img");
+let index = 0;
+
+// AUTO SWITCH
+setInterval(()=>{
+  images[index].classList.remove("active");
+  index = (index + 1) % images.length;
+  images[index].classList.add("active");
+},4000);
+
+// SWIPE SUPPORT
+let startX = 0;
+
+document.querySelector(".hero-images").addEventListener("touchstart", e=>{
+  startX = e.touches[0].clientX;
+});
+
+document.querySelector(".hero-images").addEventListener("touchend", e=>{
+  let endX = e.changedTouches[0].clientX;
+
+  if(endX < startX){
+    nextSlide();
+  }else{
+    prevSlide();
+  }
+});
+
+function nextSlide(){
+  images[index].classList.remove("active");
+  index = (index + 1) % images.length;
+  images[index].classList.add("active");
+}
+
+function prevSlide(){
+  images[index].classList.remove("active");
+  index = (index - 1 + images.length) % images.length;
+  images[index].classList.add("active");
+}
+const slides = document.querySelectorAll(".slide");
+let currentSlide = 0;
+
+/* AUTO SLIDE */
+setInterval(()=>{
+  slides[currentSlide].classList.remove("active");
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add("active");
+}, 4000);
+
+/* SWIPE SUPPORT */
+let startX = 0;
+
+const slider = document.querySelector(".hero-slider");
+
+slider.addEventListener("touchstart", e=>{
+  startX = e.touches[0].clientX;
+});
+
+slider.addEventListener("touchend", e=>{
+  let endX = e.changedTouches[0].clientX;
+
+  if(endX < startX){
+    nextSlide();
+  }else{
+    prevSlide();
+  }
+});
+
+function nextSlide(){
+  slides[currentSlide].classList.remove("active");
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add("active");
+}
+
+function prevSlide(){
+  slides[currentSlide].classList.remove("active");
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  slides[currentSlide].classList.add("active");
+}
+</script>
+<script>
+  lucide.createIcons();
+</script>
+</body>
+</html>
