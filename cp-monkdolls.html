@@ -29,7 +29,9 @@
 html{
   scroll-behavior:smooth;
 }
-
+section{
+  scroll-margin-top:120px;
+}
 body{
   background:var(--bg);
   font-family:'Inter',sans-serif;
@@ -649,6 +651,7 @@ footer{
   }
 
 }
+
 </style>
 </head>
 
@@ -661,11 +664,11 @@ footer{
 <div class="logo">LOLO LOKA</div>
 
 <div class="nav-links">
-<a href="#">Home</a>
-<a href="#">Collections</a>
-<a href="#">Live Experience</a>
-<a href="#">About</a>
-<a href="#">Contact</a>
+<a href="#home">Home</a>
+<a href="#collections">Collections</a>
+<a href="#live-experience">Live Experience</a>
+<a href="#process">Process</a>
+<a href="#contact">Contact</a>
 </div>
 
 <div class="icons">
@@ -676,7 +679,7 @@ footer{
 </nav>
 <!-- HERO -->
 
-<section class="hero">
+<section class="hero" id="home">
 
 <div class="hero-content">
 
@@ -686,7 +689,9 @@ footer{
 Handcrafted personalized family portrait frames created live in front of you using ceramic and wood art in Vienna.
 </p>
 
-<button>Explore Collection</button>
+<a href="#collections">
+  <button>Explore Collection</button>
+</a>
 
 </div>
 
@@ -694,7 +699,7 @@ Handcrafted personalized family portrait frames created live in front of you usi
 
 <!-- PRODUCTS -->
 
-<section class="section">
+<section class="section" id="collections">
 
 <div class="section-title">
 <h2>Personalized Portrait Collection</h2>
@@ -773,7 +778,7 @@ Celebrate special family moments with handcrafted pregnancy and newborn portrait
 
 <!-- LIVE EXPERIENCE -->
 
-<section class="section">
+<section class="section" id="live-experience">
 
 <div class="story">
 
@@ -821,7 +826,7 @@ Featuring iconic Vienna landmarks including Schönbrunn, Stephansdom, Rathaus an
 
 <!-- PROCESS -->
 
-<section class="section">
+<section class="section" id="process">
 
 <div class="section-title">
 <h2>From Clay to Portrait</h2>
@@ -896,7 +901,7 @@ The final personalized portrait is assembled live in front of customers within m
 
 <!-- TESTIMONIALS -->
 
-<section class="section">
+<section class="section" id="testimonials">
 
 <div class="section-title">
 <h2>Customer Memories</h2>
@@ -932,7 +937,7 @@ The final personalized portrait is assembled live in front of customers within m
 
 <!-- SUSTAINABILITY -->
 
-<section class="section">
+<section class="section" id="contact">
 
 <div class="story">
 
