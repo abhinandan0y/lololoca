@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Luxury Handmade Store</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --bg:#f8f5f1;
+  --card:#ffffff;
+  --accent:#d7c1a5;
+  --text:#222;
+  --muted:#777;
+  --shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--bg);
+  font-family:'Inter',sans-serif;
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+  padding:18px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter:blur(10px);
+  background:rgba(255,255,255,0.7);
+  border-bottom:1px solid rgba(255,255,255,0.2);
+}
+
+.logo{
+  font-size:28px;
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+}
+
+.nav-links{
+  display:flex;
+  gap:35px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:var(--text);
+  font-size:15px;
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  color:var(--accent);
+}
+
+.icons{
+  display:flex;
+  gap:15px;
+  font-size:20px;
+  cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+  height:100vh;
+  background:url('brand.jpg') center/cover;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  color:white;
+  max-width:700px;
+  padding:20px;
+}
+
+.hero-content h1{
+  font-size:72px;
+  line-height:1.1;
+  font-family:'Playfair Display',serif;
+  margin-bottom:20px;
+}
+
+.hero-content p{
+  font-size:18px;
+  margin-bottom:35px;
+  line-height:1.8;
+}
+
+.hero-content button{
+  padding:15px 35px;
+  border:none;
+  background:var(--accent);
+  color:black;
+  font-weight:600;
+  cursor:pointer;
+  border-radius:40px;
+  transition:0.4s;
+}
+
+.hero-content button:hover{
+  transform:translateY(-3px);
+}
+
+/* SECTION */
+
+.section{
+  padding:100px 8%;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.section-title h2{
+  font-size:50px;
+  font-family:'Playfair Display',serif;
+  margin-bottom:15px;
+}
+
+.section-title p{
+  color:var(--muted);
+}
+
+/* PRODUCTS */
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:35px;
+}
+
+.product-card{
+  background:var(--card);
+  border-radius:25px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:0.4s;
+}
+
+.product-card:hover{
+  transform:translateY(-8px);
+}
+
+.product-image{
+  height:320px;
+  overflow:hidden;
+}
+
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:0.5s;
+}
+
+.product-card:hover img{
+  transform:scale(1.08);
+}
+
+.product-info{
+  padding:25px;
+}
+
+.product-info h3{
+  margin-bottom:10px;
+  font-size:22px;
+}
+
+.product-info p{
+  color:var(--muted);
+  margin-bottom:15px;
+  line-height:1.6;
+}
+
+.price{
+  font-size:20px;
+  font-weight:700;
+}
+
+/* STORY SECTION */
+
+.story{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.story img{
+  width:100%;
+  border-radius:30px;
+  box-shadow:var(--shadow);
+}
+
+.story-content h2{
+  font-size:50px;
+  font-family:'Playfair Display',serif;
+  margin-bottom:25px;
+}
+
+.story-content p{
+  color:var(--muted);
+  line-height:2;
+  margin-bottom:25px;
+}
+
+.story-content button{
+  padding:14px 28px;
+  border:none;
+  border-radius:40px;
+  background:black;
+  color:white;
+  cursor:pointer;
+}
+
+/* BANNER */
+
+.banner{
+  height:450px;
+  background:url('play.jpg') center/cover;
+  border-radius:35px;
+  position:relative;
+  overflow:hidden;
+}
+
+.banner::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.4);
+}
+
+.banner-content{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+.banner-content h2{
+  font-size:60px;
+  font-family:'Playfair Display',serif;
+  margin-bottom:20px;
+}
+
+.banner-content p{
+  max-width:700px;
+  line-height:1.8;
+}
+
+/* TESTIMONIALS */
+
+.testimonials{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+}
+
+.testimonial{
+  background:white;
+  padding:35px;
+  border-radius:25px;
+  box-shadow:var(--shadow);
+}
+
+.testimonial p{
+  line-height:1.8;
+  color:var(--muted);
+  margin-bottom:20px;
+}
+
+.testimonial h4{
+  font-size:18px;
+}
+
+/* NEWSLETTER */
+
+.newsletter{
+  background:white;
+  padding:70px;
+  border-radius:35px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.newsletter h2{
+  font-size:50px;
+  font-family:'Playfair Display',serif;
+  margin-bottom:20px;
+}
+
+.newsletter p{
+  color:var(--muted);
+  margin-bottom:35px;
+}
+
+.newsletter-box{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.newsletter input{
+  padding:16px 20px;
+  width:320px;
+  border:none;
+  background:#f1f1f1;
+  border-radius:40px;
+  outline:none;
+}
+
+.newsletter button{
+  padding:16px 30px;
+  border:none;
+  border-radius:40px;
+  background:black;
+  color:white;
+  cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+  margin-top:100px;
+  padding:60px 8%;
+  background:#111;
+  color:white;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:40px;
+}
+
+.footer-grid h3{
+  margin-bottom:20px;
+}
+
+.footer-grid p,
+.footer-grid a{
+  color:#bbb;
+  line-height:2;
+  text-decoration:none;
+}
+
+.bottom{
+  margin-top:50px;
+  text-align:center;
+  color:#777;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+  .hero-content h1{
+    font-size:48px;
+  }
+
+  .story{
+    grid-template-columns:1fr;
+  }
+
+  .banner-content h2{
+    font-size:42px;
+  }
+
+}
+
+@media(max-width:700px){
+
+  nav{
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .nav-links{
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .hero-content h1{
+    font-size:40px;
+  }
+
+  .section-title h2{
+    font-size:38px;
+  }
+
+  .newsletter{
+    padding:45px 25px;
+  }
+
+}
+/* =========================
+   PREMIUM RESPONSIVE DESIGN
+========================= */
+
+@media(max-width:1024px){
+
+  .section{
+    padding:80px 6%;
+  }
+
+  .hero-content h1{
+    font-size:58px;
+  }
+
+  .story{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+
+  .story-content{
+    text-align:center;
+  }
+
+  .banner-content h2{
+    font-size:48px;
+  }
+
+}
+
+@media(max-width:768px){
+
+  nav{
+    padding:16px 5%;
+    flex-direction:column;
+    gap:18px;
+  }
+
+  .logo{
+    font-size:24px;
+  }
+
+  .nav-links{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:16px;
+  }
+
+  .nav-links a{
+    font-size:14px;
+  }
+
+  .hero{
+    height:88vh;
+  }
+
+  .hero-content{
+    padding:20px;
+  }
+
+  .hero-content h1{
+    font-size:42px;
+    line-height:1.2;
+  }
+
+  .hero-content p{
+    font-size:15px;
+    line-height:1.7;
+  }
+
+  .hero-content button{
+    padding:14px 28px;
+    font-size:14px;
+  }
+
+  .section{
+    padding:70px 5%;
+  }
+
+  .section-title{
+    margin-bottom:45px;
+  }
+
+  .section-title h2{
+    font-size:34px;
+    line-height:1.2;
+  }
+
+  .section-title p{
+    font-size:14px;
+  }
+
+  .products{
+    grid-template-columns:1fr;
+    gap:25px;
+  }
+
+  .product-image{
+    height:280px;
+  }
+
+  .product-info{
+    padding:22px;
+  }
+
+  .product-info h3{
+    font-size:20px;
+  }
+
+  .story-content h2{
+    font-size:34px;
+  }
+
+  .story-content p{
+    font-size:15px;
+    line-height:1.9;
+  }
+
+  .banner{
+    height:350px;
+    border-radius:25px;
+  }
+
+  .banner-content h2{
+    font-size:34px;
+  }
+
+  .banner-content p{
+    font-size:14px;
+    line-height:1.8;
+  }
+
+  .testimonials{
+    grid-template-columns:1fr;
+  }
+
+  .testimonial{
+    padding:28px;
+  }
+
+  .newsletter{
+    padding:40px 22px;
+    border-radius:25px;
+  }
+
+  .newsletter h2{
+    font-size:34px;
+  }
+
+  .newsletter p{
+    font-size:14px;
+    line-height:1.7;
+  }
+
+  .newsletter-box{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .newsletter input{
+    width:100%;
+  }
+
+  .newsletter button{
+    width:100%;
+  }
+
+  footer{
+    padding:50px 5%;
+  }
+
+  .footer-grid{
+    gap:30px;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .hero-content h1{
+    font-size:34px;
+  }
+
+  .section-title h2{
+    font-size:28px;
+  }
+
+  .story-content h2{
+    font-size:28px;
+  }
+
+  .banner-content h2{
+    font-size:28px;
+  }
+
+  .newsletter h2{
+    font-size:28px;
+  }
+
+  .product-image{
+    height:240px;
+  }
+
+  .product-card{
+    border-radius:20px;
+  }
+
+  .banner{
+    height:300px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+<!-- NAVBAR -->
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">LOLO LOKA</div>
+
+<div class="nav-links">
+<a href="#">Home</a>
+<a href="#">Collections</a>
+<a href="#">Live Experience</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
+</div>
+
+<div class="icons">
+<span>♡</span>
+<span>🎄</span>
+</div>
+
+</nav>
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>One in the World, Just Like You</h1>
+
+<p>
+Handcrafted personalized family portrait frames created live in front of you using ceramic and wood art in Vienna.
+</p>
+
+<button>Explore Collection</button>
+
+</div>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<section class="section">
+
+<div class="section-title">
+<h2>Personalized Portrait Collection</h2>
+<p>Every frame is handcrafted live within 5–10 minutes</p>
+</div>
+
+<div class="products">
+
+<div class="product-card">
+
+<div class="product-image">
+<img src="toy15.jpg">
+</div>
+
+<div class="product-info">
+<h3>Couple Portrait Frame</h3>
+<p>
+Personalized ceramic couple portrait with names, Vienna background and festive accessories.
+</p>
+<div class="price">€39</div>
+</div>
+
+</div>
+
+<div class="product-card">
+
+<div class="product-image">
+<img src="toy13.jpg">
+</div>
+
+<div class="product-info">
+<h3>Family Portrait</h3>
+<p>
+Custom handcrafted family artwork with pets, children and holiday decorations.
+</p>
+<div class="price">€59</div>
+</div>
+
+</div>
+
+<div class="product-card">
+
+<div class="product-image">
+<img src="toy11.jpg">
+</div>
+
+<div class="product-info">
+<h3>Christmas Edition</h3>
+<p>
+Festive Vienna-inspired Christmas portrait collection with seasonal decorations.
+</p>
+<div class="price">€69</div>
+</div>
+
+</div>
+
+<div class="product-card">
+
+<div class="product-image">
+<img src="toy4.jpg">
+</div>
+
+<div class="product-info">
+<h3>Baby On The Way</h3>
+<p>
+Celebrate special family moments with handcrafted pregnancy and newborn portrait art.
+</p>
+<div class="price">€79</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- LIVE EXPERIENCE -->
+
+<section class="section">
+
+<div class="story">
+
+<img src="play1.jpg">
+
+<div class="story-content">
+
+<h2>Live Personalization Experience</h2>
+
+<p>
+Unlike traditional craft stalls, every portrait is created live in front of visitors. Customers select ceramic faces, hairstyles, outfits, skin tones, pets, accessories and Vienna-themed backgrounds while watching the artwork come to life.
+</p>
+
+<p>
+Each handcrafted ceramic component is produced from scratch using natural clay, kiln firing, hand painting and detailed face drawing — making every smile truly unique.
+</p>
+
+<button>Discover Process</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CHRISTMAS BANNER -->
+
+<section class="section">
+
+<div class="banner">
+
+<div class="banner-content">
+
+<h2>Vienna Christmas Collection</h2>
+
+<p>
+Featuring iconic Vienna landmarks including Schönbrunn, Stephansdom, Rathaus and festive Christmas decorations crafted into unforgettable personalized keepsakes.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PROCESS -->
+
+<section class="section">
+
+<div class="section-title">
+<h2>From Clay to Portrait</h2>
+<p>100% handcrafted ceramic production process</p>
+</div>
+
+<div class="products">
+
+<div class="product-card">
+
+<div class="product-image">
+<img src="mk.jpeg.jpg">
+</div>
+
+<div class="product-info">
+<h3>Clay Preparation</h3>
+<p>
+Natural liquid clay is prepared and poured into custom plaster molds.
+</p>
+</div>
+
+</div>
+
+<div class="product-card">
+
+<div class="product-image">
+<img src="toy1.jpg">
+</div>
+
+<div class="product-info">
+<h3>Kiln Firing</h3>
+<p>
+Each component is kiln-fired at 950°C for durability and artistic quality.
+</p>
+</div>
+
+</div>
+
+<div class="product-card">
+
+<div class="product-image">
+<img src="toy2.jpg">
+</div>
+
+<div class="product-info">
+<h3>Hand Painting</h3>
+<p>
+Every body, face and accessory is individually hand-painted with intricate details.
+</p>
+</div>
+
+</div>
+
+<div class="product-card">
+
+<div class="product-image">
+<img src="toy3.jpg">
+</div>
+
+<div class="product-info">
+<h3>Live Assembly</h3>
+<p>
+The final personalized portrait is assembled live in front of customers within minutes.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section class="section">
+
+<div class="section-title">
+<h2>Customer Memories</h2>
+<p>Families from around the world love the experience</p>
+</div>
+
+<div class="testimonials">
+
+<div class="testimonial">
+<p>
+“This was the most emotional Christmas gift we found in Vienna. Watching it being created live was magical.”
+</p>
+<h4>— Emma & Daniel</h4>
+</div>
+
+<div class="testimonial">
+<p>
+“Our kids absolutely loved choosing their own ceramic figures and pets.”
+</p>
+<h4>— Sophie Müller</h4>
+</div>
+
+<div class="testimonial">
+<p>
+“Beautiful craftsmanship and such a unique personalized keepsake from Vienna.”
+</p>
+<h4>— Olivia Carter</h4>
+</div>
+
+</div>
+
+</section>
+
+<!-- SUSTAINABILITY -->
+
+<section class="section">
+
+<div class="story">
+
+<div class="story-content">
+
+<h2>Sustainably Handcrafted</h2>
+
+<p>
+All ceramic components are handmade using natural clay, FSC-certified wooden frames and water-based non-toxic paints. Every portrait is produced on demand to minimize waste and eliminate mass production.
+</p>
+
+<p>
+No plastic packaging. No factory production. Only handcrafted memories designed to last forever.
+</p>
+
+<button>Learn More</button>
+
+</div>
+
+<img src="mt1.png">
+
+</div>
+
+</section>
+
+<!-- NEWSLETTER -->
+
+<section class="section">
+
+<div class="newsletter">
+
+<h2>Join The Lolo Loka World</h2>
+
+<p>
+Follow our Vienna Christmas journey and discover handcrafted personalized creations.
+</p>
+
+<div class="newsletter-box">
+
+<input type="email" placeholder="Enter your email">
+
+<button>Subscribe</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+<h3>LOLO LOKA</h3>
+<p>
+Handcrafted personalized ceramic family portraits inspired by Vienna, Christmas traditions and emotional storytelling.
+</p>
+</div>
+
+<div>
+<h3>Collections</h3>
+<p><a href="#">Family Portraits</a></p>
+<p><a href="#">Christmas Collection</a></p>
+<p><a href="#">Couple Frames</a></p>
+</div>
+
+<div>
+<h3>Company</h3>
+<p><a href="#">About Us</a></p>
+<p><a href="#">Live Experience</a></p>
+<p><a href="#">Markets</a></p>
+</div>
+
+<div>
+<h3>Connect</h3>
+<p><a href="#">Instagram</a></p>
+<p><a href="#">Vienna Markets</a></p>
+<p><a href="#">Contact</a></p>
+</div>
+
+</div>
+
+<div class="bottom">
+© 2026 LOLO LOKA — Handcrafted in Vienna
+</div>
+
+</footer>
+
+</body>
+</html>
